@@ -1,0 +1,76 @@
+{% extends "index/layout.njk" %}
+
+{% block content %}
+    <div class="container">
+
+        <div class="show">
+            <div class="text">
+                <h1>As melhores receitas</h1>
+                <h4>Aprenda a construir os melhores pratos com receitas criadas por profissionais do mundo inteiro.</h4>
+            </div>
+
+            <img src="/assets/chef.png" alt="Chef">
+        </div>
+
+        <h1>Algumas de nossas principais receitas</h1>
+
+        <div class="container">
+            <div class="cards" >
+        
+                <div class="card" id="{{recipes[0].id}}">
+                    <img src="{{recipes[0].img}}" alt="{{recipes[0].title}}">
+                    <div class="description">
+                        <h3 class="wrapper1">{{recipes[0].title}}</h3>
+                        <h5 class="wrapper2">{{recipes[0].chef_name}}</h5>
+                    </div>
+                </div>   
+
+                <div class="card" id="{{recipes[1].id}}">
+                    <img src="{{recipes[1].img}}" alt="{{recipes[1].title}}">
+                    <div class="description">
+                        <h3 class="wrapper1">{{recipes[1].title}}</h3>
+                        <h5 class="wrapper2">{{recipes[1].chef_name}}</h5>
+                    </div>
+                </div>   
+
+                <div class="card" id="{{recipes[2].id}}">
+                    <img src="{{recipes[2].img}}" alt="{{recipes[2].title}}">
+                    <div class="description">
+                        <h3 class="wrapper1">{{recipes[2].title}}</h3>
+                        <h5 class="wrapper2">{{recipes[2].chef_name}}</h5>
+                    </div>
+                </div>   
+
+                <div class="card" id="{{recipes[5].id}}">
+                    <img src="{{recipes[3].img}}" alt="{{recipes[3].title}}">
+                    <div class="description">
+                        <h3 class="wrapper1">{{recipes[3].title}}</h3>
+                        <h5 class="wrapper2">{{recipes[3].chef_name}}</h5>
+                    </div>
+                </div>   
+
+                <div class="card" id="{{recipes[4].id}}">
+                    <img src="{{recipes[4].img}}" alt="{{recipes[4].title}}">
+                    <div class="description">
+                        <h3 class="wrapper1">{{recipes[4].title}}</h3>
+                        <h5 class="wrapper2">{{recipes[4].chef_name}}</h5>
+                    </div>
+                </div>   
+
+                <div class="card" id="{{recipes[5].id}}">
+                    <img src="{{recipes[5].img}}" alt="{{recipes[5].title}}">
+                    <div class="description">
+                        <h3 class="wrapper1">{{recipes[5].title}}</h3>
+                        <h5 class="wrapper2">{{recipes[5].chef_name}}</h5>
+                    </div>
+                </div>   
+
+            </div>
+        </div>
+    </div>
+    
+    
+{% endblock %}
+
+    
+            

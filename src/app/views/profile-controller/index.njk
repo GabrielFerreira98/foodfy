@@ -1,0 +1,31 @@
+{% extends "profile-controller/layout.njk" %}
+
+{%block header%}
+
+<div class="user-headerContainer">
+    <div class="header">
+        <h2>Detalhes</h2>
+        <a href="/users/recipes">Minhas Receitas Cadastradas</a>
+    </div>
+</div>
+    
+{%endblock%}
+
+{%block content%}
+
+<div class="user-create container">
+    <form method="POST" action="/users/profile?_method=PUT" >
+
+        {% include 'profile-controller/fields.njk' %}
+
+        <input
+                type="hidden"
+                name="id"
+                value={{user.id}}>
+
+        <button class='edit' type="submit" class="user-submit">Salvar Usuário</button>
+
+    </form>
+</div>
+
+{% endblock %}

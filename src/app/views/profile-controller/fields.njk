@@ -1,0 +1,24 @@
+<div class="individualForm">
+    <h4>Nome Completo</h4>
+    <input 
+        type="text"
+        name="name"
+        placeholder="   Digite seu nome completo"
+        value="{{ user.name }}">
+</div>
+
+<div class="individualForm">
+    <h4>Email</h4>
+    <input 
+        type="email"
+        name="email"
+        placeholder="   Digite seu email"
+        value="{{ user.email }}"
+        onblur="Validate.apply(this, 'isEmail')">
+</div>
+
+<div class="checkBox individualForm">
+    <input type="checkbox" name="is_admin" value="{{ user.is_admin }}"
+    {% if user.is_admin == true %} checked {% endif %}>
+    <h4>Administrador</h4>
+</div>

@@ -1,0 +1,41 @@
+{% extends "admin/layout.njk" %}
+
+{%block header%}
+<div class="headerContainer">
+    <div class="header">
+        <h2>Receitas</h2>
+        <a href="recipes/create">Criar Nova Receita</a>
+    </div>
+</div>
+
+
+{%endblock%}
+
+{% block content%}
+    <div class="container">
+        <div class="cards" >
+
+        {% for recipe in recipes %}
+
+        
+            <div class="card" id="{{recipe.id}}">
+                <img src="{{recipe.img}}" alt="{{recipe.title}}">
+                <div class="description">
+                    <h3 class="wrapper1">{{recipe.title}}</h3>
+                    <h5 class="wrapper2">{{recipe.chef_name}}</h5>
+                </div>
+            </div>       
+
+        {% endfor %}
+
+    </div>
+    </div>
+
+
+{% endblock %}
+
+{% block script %}
+<script src="../../../../../scripts/scripts2.js"></script>
+{% endblock %}
+
+

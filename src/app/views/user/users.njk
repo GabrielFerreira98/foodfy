@@ -1,0 +1,40 @@
+{% extends "user/layout.njk" %}
+
+{%block header%}
+
+<div class="user-headerContainer">
+    <div class="header">
+        <h2>Usuários</h2>
+        <a href="users/create">Criar Novo Usuário</a>
+    </div>
+</div>
+    
+{%endblock%}
+
+{%block content%}
+
+    <div class="container">
+        <div class="users" >
+
+            {% for user in users %}
+                
+            <div class="user" id="{{ user.id }}">
+                <h3>{{ user.name }}</h3>
+                <h4>{{ user.email }}</h4>
+                <div class="user-buttons">
+                    <a class="edit" href="users/{{user.id}}/edit">Editar</a>
+                    <button class="remove" type="submit" form="{{loop.index0}}">Remover</button>
+                </div>
+                <form action="/users?_method=DELETE" method="post" id="{{loop.index0}}">
+                    <input type="hidden" name="id" value="{{user.id}}">
+                </form>
+            </div>
+
+            {% endfor %}
+
+            
+
+        </div>
+    </div>
+
+{% endblock %}

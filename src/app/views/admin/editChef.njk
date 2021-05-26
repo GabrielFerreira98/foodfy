@@ -1,0 +1,67 @@
+{% extends "admin/layout.njk" %}
+
+{%block header%}
+<div class="headerContainer">
+    <h2>Editando Chef</h2>
+</div>
+
+{%endblock%}
+
+{%block content%}
+    <form method="POST" action="/admin/chefs?_method=PUT" class="container" enctype="multipart/form-data">
+
+        <div class="individualForm">
+            <h4>Nome</h4>
+            <input 
+                type="text"
+                name="name"
+                value=" {{ chef.name }}">
+        </div>
+
+        <div class="individualForm">
+            <h4>Imagem da Receita</h4>
+                <div>
+                    <div id="photos-upload">
+                        <input 
+                            id="photos-input"
+                            type="file"
+                            name="photos"
+                            multiple
+                            accept="image/*"
+                            onchange="PhotosUpload.handleChefFileInput(event)"
+                            >
+                        <p>Selecione até 1 Foto!</p>
+                    </div>
+                    <div id="photos-preview">
+                        {% if files %}
+                            {% for image in files %}
+                                <div class="photo" id='{{ image.id }}'>
+                                    <img src="{{image.src}}" alt="{{image.name}}" srcset="">
+                                    <i class="material-icons"
+                                        onclick="PhotosUpload.removeOldPhoto(event)">X</i>
+                                </div>
+                            {% endfor %}
+                            <input type="hidden" name="removed_files">
+                        {% endif %}
+                    </div>
+                </div>
+        </div>
+
+        <input
+                type="hidden"
+                name="id"
+                value={{chef.id}}>
+
+        <button class='edit' type="submit" onclick="Validate.allFields(event)">Salvar Chef</button>
+    </form>
+
+    <form id="form-delete"  action="/admin/chefs?_method=DELETE" method="POST" class="container">
+        <input type="hidden" name="id" value="{{chef.id}}">
+        <button class='editDelete' type="submit">Deletar</button>
+    </form>
+
+    {% block script %}
+    <script src="../../../../../scripts/mainScript.js"></script>
+    {% endblock %}
+
+{% endblock %}

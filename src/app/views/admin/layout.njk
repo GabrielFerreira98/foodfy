@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foodfy</title>
+
+    {% include 'parts/styles.njk' %}
+
+</head>
+
+<body>
+        <header>
+            <img src="/assets/logo.png" alt="LogoMarca">
+            <div class="links">
+                <a href="/admin/recipes">Receitas</a>
+                <a href="/admin/chefs">Chefs</a>
+                <a href="/users/profile">Account</a>
+            </div>
+            <form action='/admin/recipes' method='GET'>
+                <input type="text" placeholder="Buscar uma Receita" name='filter'>
+                <button type='submit'>Buscar</button>
+            </form>
+
+        </header>
+
+        {% block header %}{% endblock%}
+        
+    
+        {% block content %}{% endblock %}
+
+    {% block script %}{% endblock %}
+
+
+</body>
+
+<footer class="copyright">
+    <h5>Todos os direitos reservados, Receitas Foodfy.</h5>
+</footer>
+
+</html>

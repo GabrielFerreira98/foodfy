@@ -1,0 +1,26 @@
+{% extends "index/layout.njk" %}
+
+{% block content %}
+    <div class="order-error container">
+        <div class="error-lottie"></div>
+        
+        <h2>Não conseguimos cadastrar sua receita!</h2>
+        <a href="/#" onclick="history.back()">Tente Novamente</a>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="/lottie.min.js"></script>
+    <script>
+
+        const element = document.querySelector('.error-lottie')
+
+        lottie.loadAnimation({
+        container: element, // the dom element that will contain the animation
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: '/56132-error.json' 
+        });
+    </script>
+{% endblock %}

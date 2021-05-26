@@ -1,0 +1,34 @@
+{% extends "user/layout.njk" %}
+
+
+{%block header%}
+
+    <div class="user-headerContainer">
+        <h2>Perfil do Usuário</h2>
+    </div>
+    
+{%endblock%}
+
+{% block content %}
+
+<div class="user-create container">
+    <form method="POST" action="/users/edit?_method=PUT" >
+
+        {% include 'user/fields.njk' %}
+
+        <div class="checkBox individualForm">
+            <input type="checkbox" name="is_admin"
+            {% if user.is_admin == true %} checked {% endif %}>
+            <h4>Administrador</h4>
+        </div>
+
+        <input type="hidden" name="id" value="{{user.id}}">
+
+        <div class="buttons">
+            <button type="submit" class="user-submit" onclick="Validate.allFields(event)">Salvar Usuário</button>      
+        </div>
+
+    </form>
+</div>
+
+{% endblock %}

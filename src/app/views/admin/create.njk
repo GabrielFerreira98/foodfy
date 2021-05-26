@@ -1,0 +1,96 @@
+{% extends "admin/layout.njk" %}
+
+{%block header%}
+<div class="headerContainer">
+    <h2>Criando Receita</h2>
+</div>
+
+{%endblock%}
+
+{%block content%}
+<div class="container">
+    <form method="POST" action="/admin/recipes" enctype="multipart/form-data">
+        <div class="individualForm">
+            <h4>Imagem da Receita</h4>
+                <div>
+                    <div id="photos-upload">
+                        <input 
+                            id="photos-input"
+                            type="file"
+                            name="photos"
+                            multiple
+                            accept="image/*"
+                            onchange="PhotosUpload.handleFileInput(event)"
+                            >
+                        <p>Selecione até 5 Fotos!</p>
+                    </div>
+                    <div id="photos-preview">
+                        
+                    </div>
+                </div>
+        </div>
+
+        <div class="individualForm">
+            <h4>Receita</h4>
+            <input 
+                type="text"
+                name="title"
+                placeholder="  Nome da Receita">
+        </div>
+
+        <div class="individualForm">
+            <div>Chef</div>
+                <div>
+                    <select name="chef_id">
+                        {% for chef in chefOptions%}
+                            <option value="{{ chef.id }}"  
+                            {% if recipe.chef_id == chef.id %} selected {% endif %}
+                            >{{ chef.name }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+        </div>
+
+        <h4>Ingredientes</h4>
+        <div id="ingredients">
+            <div class="individualForm ingredient">
+                <input type="text" name="ingredients[]" value="" placeholder="  Adicione os Ingredientes um por vez" />
+            </div>
+        </div>
+        <button type="button" class="add-ingredient">Adicionar Novo Ingrediente</button>
+
+        <h4>Modo de Preparo</h4>
+        <div id="preparations">
+            <div class="individualForm preparation">
+                <input type="text" name="preparation[]" value="" placeholder="  Adicione o Modo de Preparo Passo a Passo" />
+            </div>
+        </div>
+        <button type="button" class="add-preparation">Adicionar Novo Passo</button>
+
+        <div class="individualForm">
+            <h4>Informações</h4>
+            <textarea 
+                cols="30" 
+                rows="10"              
+                class="description" 
+                type="text"
+                name="information"
+                value="">
+
+            </textarea>
+
+                
+        </div>
+
+        <button type="submit" onclick="Validate.allFields(event)">Salvar Receita</button>
+
+    </form>
+</div>
+    
+    {% block script %}
+    <script src="../../../../../scripts/addIngredients.js"></script>
+    <script src="../../../../../scripts/addPreparations.js"></script>
+    <script src="../../../../../scripts/mainScript.js"></script>
+    {% endblock %}
+{%endblock%}

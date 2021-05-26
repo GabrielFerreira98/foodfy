@@ -1,0 +1,124 @@
+{% extends "admin/layout.njk" %}
+
+{%block header%}
+<div class="headerContainer">
+    <div class="header">
+        <h2>Editando Receita</h2>
+        <a href="/admin/recipes">Administração</a>
+    </div>
+</div>
+
+{%endblock%}
+
+{%block content%}
+<div class="container">
+    <form method="POST" action="/admin/recipes?_method=PUT" enctype="multipart/form-data">
+
+        <input
+            type="hidden"
+            name="id"
+            value="{{ recipe.id }}"
+        >
+
+        <div class="individualForm">
+            <h4>Imagem da Receita</h4>
+                <div>
+                    <div id="photos-upload">
+                        <input 
+                            id="photos-input"
+                            type="file"
+                            name="photos"
+                            multiple
+                            accept="image/*"
+                            onchange="PhotosUpload.handleFileInput(event)"
+                            >
+                        <p>Selecione até 6 Fotos!</p>
+                    </div>
+                    <div id="photos-preview">
+                        {% if recipe.files %}
+                            {% for image in recipe.files %}
+                                <div class="photo" id='{{ image.id }}'>
+                                    <img src="{{image.src}}" alt="{{image.name}}" srcset="">
+                                    <i class="material-icons"
+                                        onclick="PhotosUpload.removeOldPhoto(event)">X</i>
+                                </div>
+                            {% endfor %}
+                            <input type="hidden" name="removed_files">
+                        {% endif %}
+                    </div>
+                </div>
+        </div>
+
+        <div class="individualForm">
+            <h4>Receita</h4>
+            <input 
+                type="text"
+                name="title"
+                placeholder="Nome da Receita"
+                value="{{recipe.title}}">
+        </div>
+
+        <div class="individualForm">
+            <div>Chef</div>
+                <div>
+                    <select name="chef_id">
+                        {% for chef in chefOptions%}
+                            <option value="{{ chef.id }}"  
+                            {% if recipe.chef_id == chef.id %} selected {% endif %}
+                            >{{ chef.name }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+        </div>
+
+        <h4>Ingredientes</h4>
+        {% for ingredient in recipe.ingredients %}
+        <div id="ingredients">
+            <div class="individualForm ingredient">
+                <input type="text" name="ingredients[]" value="{{ recipe.ingredients[loop.index0] }}" placeholder="Adicione os Ingredientes um por vez" />
+            </div>
+        </div>
+        {% endfor %}
+        <button type="button" class="add-ingredient">Add Ingredient</button>
+
+
+
+        <h4>Modo de Preparo</h4>
+        {% for preparation in recipe.preparation %}
+        <div id="preparations">
+            <div class="individualForm preparation">
+                <input type="text" name="preparation[]" value="{{ recipe.preparation[loop.index0] }}" placeholder="Adicione o Modo de Preparo Passo a Passo" />
+            </div>
+        </div>
+        {% endfor %}
+        <button type="button" class="add-preparation">Add Preparation</button>
+
+        <div class="individualForm">
+            <h4>Informações Adicionais</h4>
+            <input 
+                class="description" 
+                type="text"
+                name="information"
+                value="{{ recipe.information }}"
+                >
+        </div>
+
+        <button class='edit' type="submit" onclick="Validate.allFields(event)">Salvar</button>
+
+    </form>
+
+    <form id="form-delete" action="/admin/recipes?_method=DELETE" method="POST">
+        <input type="hidden" name="id" value="{{recipe.id}}">
+        <button class='editDelete' type="submit">Deletar</button>
+    </form>
+</div>
+
+{% endblock %}
+
+{% block script %}
+        <script src="../../../../../scripts/addIngredients.js"></script>
+        <script src="../../../../../scripts/addPreparations.js"></script>
+        <script src="../../../../../scripts/mainScript.js"></script>
+{% endblock %}
+

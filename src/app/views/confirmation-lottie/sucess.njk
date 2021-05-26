@@ -1,0 +1,29 @@
+{% extends "index/layout.njk" %}
+
+{% block content %}
+    <div class="order-sucess container">
+        <div class="sucess-lottie"></div>
+        
+        <h2>Receita cadastrada com sucesso!</h2>
+        <p>
+            Sua receita já está disponível na lista de receitas!
+        </p>
+        <a href="/recipes">Olhar receitas</a>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="/lottie.min.js"></script>
+    <script>
+
+        const element = document.querySelector('.sucess-lottie')
+
+        lottie.loadAnimation({
+        container: element, // the dom element that will contain the animation
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: '/23595-check.json' 
+        });
+    </script>
+{% endblock %}

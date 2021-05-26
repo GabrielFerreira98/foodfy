@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foodfy</title>
+
+    {% include 'parts/styles.njk' %}
+    
+</head>
+
+<body>
+    <header>
+        <img src="/assets/logo.png" alt="LogoMarca">
+        <div class="links">
+            <a href="/admin/recipes">Receitas</a>
+            <a href="/admin/chefs">Chefs</a>
+            <a href="/users">Usuários</a>
+        </div>
+        <form action="/users/logout" method="POST">
+            <button class="close">Sair</button>
+        </form>
+    </header>
+
+        {% include 'parts/messages.njk' %}
+
+        {% block header %}{% endblock%}
+        
+    
+        {% block content %}{% endblock %}
+
+        <script src="../../../../../scripts/mainScript.js"></script>
+
+
+</body>
+
+<footer class="copyright">
+    <h5>Todos os direitos reservados, Receitas Foodfy.</h5>
+</footer>
+
+</html>

@@ -1,0 +1,38 @@
+{% extends "admin/layout.njk" %}
+
+{%block header%}
+<div class="headerContainer">
+    <div class="header">
+        <h2>Chefs</h2>
+        <a href="createChef">Criar Novo Chef</a>
+    </div>
+</div>
+
+{%endblock%}
+
+{% block content%}
+    <div class="container">
+        <div class="chefs" >
+
+        {% for chef in chefs %}
+
+        
+            <div class="chef" id="{{chef.id}}">
+                <img src="{{chef.img}}" alt="chef.name">
+                <div class="description">
+                    <h4>{{chef.name}}</h4>
+                    <a>Visualizar</a>
+                </div>
+            </div>       
+
+        {% endfor %}
+
+    </div>
+    </div>
+
+
+{% endblock %}
+
+{% block script %}
+<script src="../../../../../scripts/scripts3.js"></script>
+{% endblock %}

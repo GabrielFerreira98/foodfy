@@ -1,0 +1,71 @@
+{% extends "admin/layout.njk" %}
+
+{% block content%}
+
+<div class="container">
+    <div class="food">
+        <div class="food-image">
+            <div class="highlight">
+                <img src="{{recipe.img}}" alt="{{recipe.name}}">
+            </div>
+            <div class="gallery-preview">
+                {% for image in files %}
+                    <img 
+                        src="{{image.src}}" 
+                        alt="{{image.name}}"
+                        {% if loop.index0 == 0 %}
+                        class="active"
+                        {%endif%}
+                        onclick="ImageGallery.setImage(event)"
+                        >
+                {% endfor %}
+            </div>
+
+            <h1>{{recipe.title}}</h1>
+        </div>
+    
+    <div class="ingredients-wrapper">
+        <div class="ingredients">
+            <h2>Ingredientes</h2>
+            <button class="button">Mostrar</button>
+        </div>
+        <div class="content">
+            {% for ingredient in recipe.ingredients %}
+            <li>{{recipe.ingredients[loop.index0]}}</li>
+            {% endfor %}
+        </div>
+        
+    </div>
+    
+    <div class="ingredients-wrapper">
+        <div class="ingredients">
+            <h2>Modo de preparo</h2>
+            <button class="button">Mostrar</button>
+        </div>
+        <div class="content">
+            {% for ingredient in recipe.preparation %}
+            <li>{{recipe.preparation[loop.index0]}}</li>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <div class="ingredients-wrapper">
+        <div class="ingredients">
+            <h2>Informações Adicionais</h2>
+            <button class="button">Mostrar</button>
+        </div>
+        <div class="content">
+            <h4>{{recipe.information}}</h4>
+        </div>
+    </div>
+    <a href="/admin/recipes/{{ recipe.id }}/edit" class="button edit">Editar</a>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script src="../../../../../scripts/showhide.js"></script>
+<script src="../../../../../scripts/mainScript.js"></script>
+{% endblock %}
+
