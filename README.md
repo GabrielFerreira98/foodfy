@@ -7,4 +7,6 @@ Execute o comando 'npm install' para instalar as demais dependências utilizadas
 
 Configure o banco de dados e execute no postbird os comandos do arquivo database.js
 
+Execute o comando 'node seed.js' para criar os elementos aleatórios.
+
 Se saboreie com o foodfy by RocketSeat feito por Gabriel Ferreira :)
