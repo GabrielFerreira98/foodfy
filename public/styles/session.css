@@ -1,0 +1,27 @@
+.login.container form,
+.login.container form .individualForm input{
+    width: 500px;
+}
+
+.footer{
+    text-align: center;
+}
+.footer a{
+    color: #777;
+}
+
+.footer a:hover{
+    color: black;
+    font-weight: bold;
+}
+
+.login.container .buttons button{
+    width: 500px;
+    margin-bottom: 24px;
+}
+
+.login.container,
+.user-headerContainer.login,
+header.login{
+    width: 500px;
+}
